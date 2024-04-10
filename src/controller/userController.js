@@ -67,6 +67,17 @@ async function getUserById(req, res) {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).send({});
+    res.status(500).send({
+      message: "Error getting user by ID",
+      error: error.message,
+    });
   }
 }
+
+module.exports = {
+  getAllUser,
+  createUser,
+  updateUser,
+  deleteUser,
+  getUserById,
+};
