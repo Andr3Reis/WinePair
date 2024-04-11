@@ -8,8 +8,6 @@ app.get("/", (req, res) => {
   res.send(`<h1>Bem Vindo ao WinePair!!<h1>`);
 });
 
-console.log("oiiii")
-
 app.listen(PORT, () => {
   console.log("Servidor Online!");
 });
