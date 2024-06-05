@@ -9,7 +9,7 @@ async function createUserTable() {
 
     await connection.query(`CREATE TABLE IF NOT EXISTS user (
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            nomeUsuario VARCHAR(255) NOT NULL,
+            usuario VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
             senha VARCHAR(255) NOT NULL,
             dataRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -17,9 +17,9 @@ async function createUserTable() {
 
     await connection.end();
 
-    console.log("Table user created!");
+    console.log("Table 'user' created!");
   } catch (error) {
-    console.log(`Error creating table User: ${error}`);
+    console.log(`Error creating table 'user': ${error}`);
   }
 }
 
