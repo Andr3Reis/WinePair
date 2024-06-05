@@ -20,7 +20,7 @@ async function createChat(
   const connection = await mysql.createConnection(databaseConfig);
 
   const insertChat =
-    "INSERT INTO user(idUser, mensagemEnviada, mensagemRecebida, dataInteracao) VALUES(?, ?, ?, ?)";
+    "INSERT INTO chat(idUser, mensagemEnviada, mensagemRecebida, dataInteracao) VALUES(?, ?, ?, ?)";
 
   await connection.query(insertChat, [
     idUser,
