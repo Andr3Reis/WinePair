@@ -42,7 +42,7 @@ async function updateChat(
   const connection = await mysql.createConnection(databaseConfig);
 
   const updateChat =
-    "UPDATE chat SET idUser=?, mensagemEnviada = ?, mensagemRecebida = ?, dataInteracao = ? WHERE id = ?";
+    "UPDATE chat SET idUser = ?, mensagemEnviada = ?, mensagemRecebida = ?, dataInteracao = ? WHERE id = ?";
 
   await connection.query(updateChat, [
     idUser,
