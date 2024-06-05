@@ -15,9 +15,12 @@ async function createCompraTable() {
             dataCompra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             preco DECIMAL(10,2),
             quantidade INT,
-            FOREIGN KEY (id_vinho) REFERENCES vinho(id),
-            FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-            FOREIGN KEY (id_lojas) REFERENCES lojas(id)          
+            FOREIGN KEY (id_usuario) REFERENCES user(id)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE,
+            FOREIGN KEY (id_lojas) REFERENCES lojas(id)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
         )`);
 
     await connection.end();

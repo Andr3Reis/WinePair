@@ -12,8 +12,10 @@ async function createChatTable() {
             id_usuario INT,
             mensagemEnviada TEXT,
             dataInteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (id_usuario) REFERENCES usuario(id)
-        )`);
+            FOREIGN KEY (id_usuario) REFERENCES user(id)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
+            )`);
 
     await connection.end();
 
