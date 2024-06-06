@@ -64,7 +64,7 @@ async function updateChat(req, res) {
     try {
       const { id } = req.params;
   
-      const user = await chatService.getChatById(id);
+      const chat = await chatService.getChatById(id);
   
       res.status(200).json(chat);
     } catch (error) {
