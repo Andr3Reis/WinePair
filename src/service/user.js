@@ -11,23 +11,23 @@ async function getAllUser() {
   return rows;
 }
 
-async function createUser(name, email, password) {
+async function createUser(usuario, email, senha) {
   const connection = await mysql.createConnection(databaseConfig);
 
-  const insertUser = "INSERT INTO user(name, email, password) VALUES(?, ?, ?)";
+  const insertUser = "INSERT INTO user(usuario, email, senha) VALUES(?, ?, ?)";
 
-  await connection.query(insertUser, [name, email, password]);
+  await connection.query(insertUser, [usuario, email, senha]);
 
   await connection.end();
 }
 
-async function updateUser(id, name, email, password) {
+async function updateUser(id, usuario, email, senha) {
   const connection = await mysql.createConnection(databaseConfig);
 
   const updateUser =
-    "UPDATE user SET name = ?, email = ?, password = ? WHERE id = ?";
+    "UPDATE user SET usuario = ?, email = ?, senha = ? WHERE id = ?";
 
-  await connection.query(updateUser, [name, email, password, id]);
+  await connection.query(updateUser, [usuario, email, senha, id]);
 
   await connection.end();
 }

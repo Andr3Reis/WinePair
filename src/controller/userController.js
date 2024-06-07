@@ -14,10 +14,10 @@ async function getAllUser(req, res) {
 }
 
 async function createUser(req, res) {
-  const { name, email, password } = req.body;
+  const { usuario, email, senha } = req.body;
 
   try {
-    await userService.createUser(name, email, password);
+    await userService.createUser(usuario, email, senha);
 
     res.status(201).json({ message: "Success " });
   } catch (error) {
@@ -31,9 +31,9 @@ async function createUser(req, res) {
 async function updateUser(req, res) {
   try {
     const { id } = req.params;
-    const { name, email, password } = req.params;
+    const { usuario, email, senha } = req.params;
 
-    await userService.updateUser(id, name, email, password);
+    await userService.updateUser(id, usuario, email, senha);
 
     res.status(204).json("Success");
   } catch (error) {
