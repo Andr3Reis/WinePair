@@ -32,7 +32,7 @@ async function createChat(req, res) {
 async function updateChat(req, res) {
     try {
       const { id } = req.params;
-      const { idCreate, mensagemEnviada, mensagemRecebida, dataInteracao } = req.params;
+      const { idCreate, mensagemEnviada, mensagemRecebida, dataInteracao } = req.body;
   
       await chatService.updateChat (idCreate, mensagemEnviada, mensagemRecebida, dataInteracao);
   

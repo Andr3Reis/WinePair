@@ -31,7 +31,7 @@ async function createCompra (req, res) {
   async function updateCompra(req, res) {
     try {
       const { id } = req.params;
-      const { idUser, idLojas, dataCompra, preco, quantidade} = req.params;
+      const { idUser, idLojas, dataCompra, preco, quantidade} = req.body;
   
       await compraService.updateCompra(idUser, idLojas, dataCompra, preco, quantidade);
   

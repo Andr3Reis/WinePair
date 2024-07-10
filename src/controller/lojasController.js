@@ -32,7 +32,7 @@ async function createLojas(req, res) {
 async function updateLojas(req, res) {
     try {
       const { id } = req.params;
-      const { nomeLoja, localizacao, descricao, avaliacao} = req.params;
+      const { nomeLoja, localizacao, descricao, avaliacao} = req.body;
   
       await lojasService.updateLojas(nomeLoja, localizacao, descricao, avaliacao);
   

@@ -31,7 +31,7 @@ async function createUser(req, res) {
 async function updateUser(req, res) {
   try {
     const { id } = req.params;
-    const { usuario, email, senha } = req.params;
+    const { usuario, email, senha } = req.body;
 
     await userService.updateUser(id, usuario, email, senha);
 
