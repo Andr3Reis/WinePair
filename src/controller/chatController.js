@@ -1,13 +1,11 @@
 const chatService = require("../service/chat.js");
 
 async function getAllChat(req, res) {
-    try{
+    try {
         const rows = await chatService.getAllChat();
-        
         res.status(200).json(rows);
-    }catch (error){
+    } catch (error) {
         res.status(500).send({
-
             message: "Error getting chats",
             body: error.message,
         });
@@ -17,13 +15,12 @@ async function getAllChat(req, res) {
 async function createChat(req, res) {
     const { idCreate, mensagemEnviada, mensagemRecebida, dataInteracao } = req.body;
 
-    try{
-        await userController.createChat(idCreate, mensagemEnviada, mensagemRecebida, dataInteracao);
-        
-        res.status(200).json({massege: "Sucess"});
-    }catch (error){
+    try {
+        await chatService.createChat(idCreate, mensagemEnviada, mensagemRecebida, dataInteracao);
+        res.status(200).json({ message: "Success" });
+    } catch (error) {
         res.status(500).send({
-            message: "Error getting chats",
+            message: "Error creating chat",
             body: error.message,
         });
     }
@@ -31,56 +28,49 @@ async function createChat(req, res) {
 
 async function updateChat(req, res) {
     try {
-      const { id } = req.params;
-      const { idCreate, mensagemEnviada, mensagemRecebida, dataInteracao } = req.body;
-  
-      await chatService.updateChat (idCreate, mensagemEnviada, mensagemRecebida, dataInteracao);
-  
-      res.status(204).json("Success");
-    } catch (error) {
-      res.status(500).send({
-        message: "Error update user!",
-        error: error.message,
-      });
-    }
-  }
+        const { id } = req.params;
+        const { idCreate, mensagemEnviada, mensagemRecebida, dataInteracao } = req.body;
 
-  async function deleteChat(req, res) {
+        await chatService.updateChat(id, idCreate, mensagemEnviada, mensagemRecebida, dataInteracao);
+        res.status(204).json("Success");
+    } catch (error) {
+        res.status(500).send({
+            message: "Error updating chat",
+            error: error.message,
+        });
+    }
+}
+
+async function deleteChat(req, res) {
     try {
-      const { id } = req.params;
-  
-      const chat = await chatService.deleteChat(id);
-  
-      res.status(200).json({ message: "Deleted Chat!" });
+        const { id } = req.params;
+        await chatService.deleteChat(id);
+        res.status(200).json({ message: "Deleted Chat!" });
     } catch (error) {
-      res.status(500).send({
-        message: "Error deleting chat!",
-        error: error.message,
-      });
+        res.status(500).send({
+            message: "Error deleting chat!",
+            error: error.message,
+        });
     }
-  }
+}
 
-  async function getChatById(req, res) {
+async function getChatById(req, res) {
     try {
-      const { id } = req.params;
-  
-      const chat = await chatService.getChatById(id);
-  
-      res.status(200).json(chat);
+        const { id } = req.params;
+        const chat = await chatService.getChatById(id);
+        res.status(200).json(chat);
     } catch (error) {
-      res.status(500).send({
-        message: "Error getting chat by ID",
-        error: error.message,
-      });
+        res.status(500).send({
+            message: "Error getting chat by ID",
+            error: error.message,
+        });
     }
-  }
-  
+}
 
-  module.exports = {
+module.exports = {
     getAllChat,
     createChat,
     updateChat,
     deleteChat,
     getChatById,
-  };
-  
+};
